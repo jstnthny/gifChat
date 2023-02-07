@@ -14,7 +14,17 @@ export const Chat = (props) => {
 
     // Api Call
 
-    use
+    useEffect(() =>{
+        axios({
+            url: `https://api.giphy.com/v1/gifs/search`,
+            params: {
+                api_key: `0BOwqWAlsHS20sdLrfJC7llfqPyQfVuJ`,
+                q: room,
+            }
+        }).then((res) =>{
+            console.log(res.data);
+        })
+    })
 
 
         useEffect(() =>{
