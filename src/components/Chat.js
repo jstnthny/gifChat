@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {addDoc, collection, serverTimestamp, onSnapshot, query, where, orderBy} from "firebase/firestore"
 import {auth, db} from "../firebase-config";
+import axios from 'axios';
 
 export const Chat = (props) => {
     const {room} = props;
@@ -9,6 +10,12 @@ export const Chat = (props) => {
 
     // setting it to our collection in firestore called "messages"
     const messagesRef = collection(db, "messages")
+
+
+    // Api Call
+
+    use
+
 
         useEffect(() =>{
             const queryMessages = query(messagesRef, where("room", "==", room), orderBy("createdAt"));
