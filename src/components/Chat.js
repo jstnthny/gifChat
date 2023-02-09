@@ -7,6 +7,8 @@ export const Chat = (props) => {
     const {room} = props;
     const [newMessage, setNewMessage] = useState("");
     const [messages, setMessages] = useState([])
+    // Gifs State
+    const [gifs, setGifs] = useState();
 
     // setting it to our collection in firestore called "messages"
     const messagesRef = collection(db, "messages")
@@ -20,11 +22,14 @@ export const Chat = (props) => {
             params: {
                 api_key: `0BOwqWAlsHS20sdLrfJC7llfqPyQfVuJ`,
                 q: room,
+                limit: 5
             }
         }).then((res) =>{
-            console.log(res.data);
+            const urls = res.data.data.map(url => url.id);
+            // console.log(urls)
+            setGifs(urls);
         })
-    })
+    }, [gifs])
 
 
         useEffect(() =>{
@@ -68,7 +73,8 @@ export const Chat = (props) => {
                 <form onSubmit={handleSubmit} className="new-message-form">
                     <input placeholder="Type your message here..." className="new-message-input" onChange={(e) => setNewMessage(e.target.value)} value={newMessage} />    
                     <button type="submit" className="send-button">Send</button>
-                </form> 
+                   {gifs && gifs.map((gif) => <img src={`https://media4.giphy.com/media/${gif}/giphy.gif`} />)}
+                </form>
             </div>
 }
 
