@@ -39,7 +39,15 @@ function App() {
           room ? <Chat room={room}/> : 
                 <div className="room">
                   <label>Enter Room Name:</label>
-                  <input ref={roomInputRef}/>
+                  {/* <input ref={roomInputRef}/> */}
+                  <select name="pets" id="pet-select" ref={roomInputRef}>
+                    <option>Dog</option>
+                    <option>Cat</option>
+                    <option>Hamster</option>
+                    <option>Parrot</option>
+                    <option>Spider</option>
+                    <option>Goldfish</option>
+                  </select>
                   <button onClick={() => setRoom(roomInputRef.current.value)}>Enter Chat</button>
                 </div>
               }
