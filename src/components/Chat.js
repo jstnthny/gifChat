@@ -7,6 +7,7 @@ export const Chat = (props) => {
     const {room} = props;
     const [newMessage, setNewMessage] = useState("");
     const [messages, setMessages] = useState([])
+    const [newGif, setNewGif] = useState("");
     // Gifs State
     const [gifs, setGifs] = useState();
 
@@ -60,6 +61,7 @@ export const Chat = (props) => {
             user: auth.currentUser.displayName,
             // same name don't have to do room: room
             room,
+            gif: newGif,
         });
     };
     return <div className="chat-app"> 
@@ -79,3 +81,4 @@ export const Chat = (props) => {
 }
 
 export default Chat;
+
